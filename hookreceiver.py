@@ -20,7 +20,7 @@ def index():
         content = request.data
         app_key = bytes(config.APP_KEY, 'utf-8') 
         signature = 'sha1=' + hmac.new(app_key, content, hashlib.sha1).hexdigest()
-        if signature == request.headers.get('X-Hub-Signature'):
+        if signature == request.headers.get('X-Hub-Signature') or request.headers.get('X-Gitlab-Token') == config.APP_KEY:
             os.system('/bin/bash {0}/gitpull.sh'.format(config.PROJECT_PATH))
             return 'OK\n'
         else:
