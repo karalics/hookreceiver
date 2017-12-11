@@ -17,10 +17,9 @@ def index():
     if request.method == 'GET':
         return 'OK'
     elif request.method == 'POST':
-        content = request.get_json(silent=True)
+        content = request.data
         app_key = bytes(config.APP_KEY, 'utf-8') 
-        payload = bytes(str(content), 'utf-8')
-        signature = 'sha1=' + hmac.new(app_key, payload, hashlib.sha1).hexdigest()
+        signature = 'sha1=' + hmac.new(app_key, content, hashlib.sha1).hexdigest()
         if signature == request.headers.get('X-Hub-Signature'):
             os.system('/bin/bash {0}/gitpull.sh'.format(config.PROJECT_PATH))
             return 'OK\n'
