@@ -9,7 +9,7 @@ from flask import request
 
 
 application = Flask(__name__)
-# curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "New item", "year": "2009"}' http://localhost:8000
+# For local tests: curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "New item", "year": "2009"}' http://localhost:8000
 
 @application.route('/', methods=['GET', 'POST'])
 def index():
@@ -21,7 +21,7 @@ def index():
         app_key = bytes(config.APP_KEY, 'utf-8') 
         signature = 'sha1=' + hmac.new(app_key, content, hashlib.sha1).hexdigest()
         if signature == request.headers.get('X-Hub-Signature') or request.headers.get('X-Gitlab-Token') == config.APP_KEY:
-            os.system('/bin/bash {0}/gitpull.sh'.format(config.PROJECT_PATH))
+            os.system('/bin/bash {0}/deploy.sh'.format(config.PROJECT_PATH))
             return 'OK\n'
         else:
             return 'ERROR\n'
