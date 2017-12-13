@@ -31,7 +31,7 @@ Create a new file hookreceiver.service in /etc/systemd/system
 #file: /etc/systemd/system/hookreceiver.service
 # change "user" to your username
 [Unit]
-Description=todamoon hookreceiver
+Description=hookreceiver
 After=network.target multi-user.target
 
 [Service]
@@ -60,6 +60,6 @@ location =  /hookreceiver/ {
 ...
 ```
 
-test it: `curl http://yourdomain.com/hookreceiver` should return "OK" in your browser. Now you can add a webhook on github or gitlab that points to yourdomain.com/hookreceiver
+test it: `curl http://yourdomain.com/hookreceiver` should return "OK" in your browser. Now you can add a webhook on github or gitlab that points to http://yourdomain.com/hookreceiver
 
 
