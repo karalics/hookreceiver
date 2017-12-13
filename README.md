@@ -18,7 +18,7 @@ pip insstall -r requirements.txt
 chmod 600 config.py
 cp example_deploy.sh /your/local/repository/deploy.sh
 ```
-Edit your config.py file. (path to your repository and your github or gitlab webhook secret)
+Edit your config.py file. (path to your local repository and your github or gitlab webhook secret)
 
 ## Optional systemd script to create a daemon
 
@@ -47,7 +47,7 @@ Finish systemd configuration:
 ```
 sudo systemctl daemon-reload
 sudo systemctl start hookreceiver
-sudo enable hookreceiver
+sudo systemctl enable hookreceiver
 ```
 Edit nginx configuration in your nginx domain config file ex: /etc/nginx/yourdomain.conf
 
