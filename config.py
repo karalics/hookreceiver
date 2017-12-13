@@ -3,4 +3,4 @@
 
 
 APP_KEY = 'yourgithubsecret'
-PROJECT_PATH = '/path/to/project'
+PROJECT_PATH = '/your/local/repository'
