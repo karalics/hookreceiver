@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ''' main application file of hookreceiver. '''
-import os
+import subprocess
 import hashlib
 import hmac
 import config
@@ -27,7 +27,8 @@ def index():
             signature == request.headers.get('X-Hub-Signature') or
             request.headers.get('X-Gitlab-Token') == config.APP_KEY
         ):
-            os.system('/bin/bash {0}/deploy.sh'.format(config.PROJECT_PATH))
+            subprocess.Popen(
+                '/bin/bash {0}/deploy.sh'.format(config.PROJECT_PATH))
             return 'OK\n'
         else:
             return 'ERROR\n'
