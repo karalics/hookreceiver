@@ -28,7 +28,7 @@ def index():
             request.headers.get('X-Gitlab-Token') == config.APP_KEY
         ):
             subprocess.Popen(
-                '/bin/bash {0}/deploy.sh'.format(config.PROJECT_PATH))
+                ['/bin/bash {0}/deploy.sh'.format(config.PROJECT_PATH)], shell = True)
             return 'OK\n'
         else:
             return 'ERROR\n'
