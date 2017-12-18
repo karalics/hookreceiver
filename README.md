@@ -14,7 +14,7 @@ cd hookreceiver
 # Works with python 3 only
 pyvenv-3.4 .
 source bin/activate
-pip insstall -r requirements.txt
+pip install -r requirements.txt
 chmod 600 config.py
 cp example_deploy.sh /your/local/repository/deploy.sh
 ```
